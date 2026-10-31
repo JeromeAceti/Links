@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JeromeASF Links</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: one narrow column, a monogram header, link rows grouped by what the visitor wants to do. Dark-first. */
+  :root {
+    --bg: #0d1021;
+    --bg-2: #141833;
+    --fg: #f2f3fb;
+    --muted: #9aa0c3;
+    --line: #262b4d;
+    --accent: #ffc83d;
+    --accent-ink: #1a1400;
+    --display: "Syne", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    --body: "Manrope", "Segoe UI", Helvetica, Arial, sans-serif;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f6f5ef; --bg-2: #ffffff; --fg: #15172b; --muted: #5d6286;
+      --line: #dddbce; --accent: #e0a600; --accent-ink: #1a1400; color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f5ef; --bg-2: #ffffff; --fg: #15172b; --muted: #5d6286;
+    --line: #dddbce; --accent: #e0a600; --accent-ink: #1a1400; color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.5;
+    padding-block: 40px 56px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 480px; margin: 0 auto; display: grid; gap: 28px; }
+
+  header { display: grid; justify-items: center; text-align: center; gap: 10px; }
+  .mono {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: var(--accent); color: var(--accent-ink);
+    font-family: var(--display); font-weight: 800; font-size: 44px;
+    display: grid; place-items: center; letter-spacing: -0.03em;
+    box-shadow: 0 0 0 6px var(--bg), 0 0 0 8px var(--accent);
+    margin-bottom: 6px;
+  }
+  h1 { font-family: var(--display); font-weight: 800; font-size: 28px; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+  .tag { margin: 0; color: var(--muted); font-size: 15px; max-width: 34ch; text-wrap: balance; }
+  .stats { display: flex; gap: 22px; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .stats div { display: grid; text-align: center; line-height: 1.15; }
+  .stats b { font-family: var(--display); font-size: 20px; font-weight: 700; }
+  .stats span { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  section { display: grid; gap: 10px; }
+  h2 {
+    margin: 0 0 2px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .link {
+    display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 14px;
+    min-height: 64px; padding: 10px 14px 10px 12px; border-radius: 16px;
+    background: var(--bg-2); border: 1px solid var(--line);
+    color: inherit; text-decoration: none;
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .link:hover, .link:focus-visible { transform: translateY(-2px); border-color: var(--accent); outline: none; }
+  .link.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .link.primary .sub, .link.primary .arrow { color: var(--accent-ink); opacity: .75; }
+  .link.primary .dot { background: var(--accent-ink); color: var(--accent); }
+  .dot {
+    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--bg); color: var(--fg); font-family: var(--display); font-weight: 700; font-size: 15px;
+  }
+  .dot.has-img { background: transparent; overflow: hidden; }
+  .dot img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block; }
+  .label { display: grid; min-width: 0; }
+  .label strong { font-weight: 700; font-size: 16px; line-height: 1.25; }
+  .sub { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .arrow { color: var(--muted); font-size: 18px; }
+
+  .contact {
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px;
+    padding: 12px 14px; border-radius: 16px; border: 1px dashed var(--line); background: transparent;
+  }
+  .contact .label strong { font-size: 14px; }
+  .contact code { font-family: var(--body); font-size: 14px; color: var(--fg); user-select: all; word-break: break-all; }
+  button {
+    font: inherit; font-weight: 700; font-size: 13px; padding: 8px 12px; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--bg-2); color: var(--fg); cursor: pointer;
+  }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 12px; }
+  @media (prefers-reduced-motion: reduce) { .link { transition: none; } .link:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="mono" aria-hidden="true">J</div>
+    <h1>JeromeASF</h1>
+    <p class="tag">Family-friendly gaming and entertainment. Since 2008.</p>
+    <div class="stats">
+      <div><b>8M+</b><span>Followers</span></div>
+      <div><b>3B+</b><span>Views</span></div>
+      <div><b>100+</b><span>Brand partners</span></div>
+    </div>
+  </header>
+
+  <div id="groups"></div>
+
+  <section>
+    <h2>Business inquiries</h2>
+    <div class="contact">
+      <div class="label"><strong>Email</strong><code id="email">business@jeromeasf.com</code></div>
+      <button id="copy" type="button">Copy</button>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span> JeromeASF LLC</footer>
+</div>
+
+<script>
+  // ===== EDIT YOUR LINKS HERE =====
+  // Each group is a heading; each link needs a label and a url. "sub", "primary" and "img" are optional.
+  // img: a path like "img/youtube.png" (or a full URL / data URI). If set, it replaces the letter badge.
+  const GROUPS = [
+    { title: "Watch", links: [
+      { label: "YouTube", sub: "@JeromeASF", url: "https://www.youtube.com/@JeromeASF", badge: "YT", primary: true },
+      { label: "Jerome ACE", sub: "Second channel", url: "https://www.youtube.com/@JeromeACE", badge: "YT" },
+    ]},
+    { title: "Play", links: [
+      { label: "Minefury - My Minecraft Server", sub: "How to join", url: "https://minefury.com/wiki/installation", badge: "MC" },
+    ]},
+    { title: "Follow", links: [
+      { label: "TikTok", sub: "@JeromeAceti", url: "https://www.tiktok.com/@JeromeAceti", badge: "TT" },
+      { label: "Instagram", sub: "@JeromeAceti", url: "https://www.instagram.com/JeromeAceti", badge: "IG" },
+      { label: "X", sub: "@JeromeASF", url: "https://x.com/JeromeASF", badge: "X" },
+    ]},
+    { title: "Shop", links: [
+      { label: "Merch", sub: "Official store on Merch For All", url: "https://merchforall.com", badge: "M" },
+      { label: "Duckables", sub: "Custom creator rubber ducks", url: "https://duckables.com", badge: "D" },
+    ]},
+  ];
+  const EMAIL = "business@jeromeasf.com";
+  // ================================
+
+  const groupsEl = document.getElementById("groups");
+  groupsEl.style.display = "grid"; groupsEl.style.gap = "28px";
+  for (const g of GROUPS) {
+    const sec = document.createElement("section");
+    const h = document.createElement("h2"); h.textContent = g.title; sec.appendChild(h);
+    for (const l of g.links) {
+      const a = document.createElement("a");
+      a.className = "link" + (l.primary ? " primary" : "");
+      a.href = l.url; a.target = "_blank"; a.rel = "noopener";
+      a.innerHTML = `<span class="dot" aria-hidden="true"></span><span class="label"><strong></strong><span class="sub"></span></span><span class="arrow" aria-hidden="true">→</span>`;
+      const dot = a.querySelector(".dot");
+      if (l.img) { const im = document.createElement("img"); im.src = l.img; im.alt = ""; dot.appendChild(im); dot.classList.add("has-img"); }
+      else dot.textContent = l.badge || l.label[0];
+      a.querySelector("strong").textContent = l.label;
+      a.querySelector(".sub").textContent = l.sub || "";
+      sec.appendChild(a);
+    }
+    groupsEl.appendChild(sec);
+  }
+
+  document.getElementById("email").textContent = EMAIL;
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const btn = document.getElementById("copy");
+  btn.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(EMAIL); btn.textContent = "Copied"; }
+    catch { const r = document.createRange(); r.selectNodeContents(document.getElementById("email")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; }
+    setTimeout(() => btn.textContent = "Copy", 1500);
+  });
+</script>
+</body>
+</html>
